@@ -302,7 +302,8 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
 		compat/win32/dirent.c
 		compat/win32/wsl.c
 		compat/nedmalloc/nedmalloc.c
-		compat/strdup.c)
+		compat/strdup.c
+		compat/win32/fscache.c)
 	set(NO_UNIX_SOCKETS 1)
 
 elseif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
