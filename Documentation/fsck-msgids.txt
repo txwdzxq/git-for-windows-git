@@ -190,6 +190,9 @@
 `packedRefMissingHeader`::
 	(INFO) The "packed-refs" file does not contain the header.
 
+`packedRefUnsorted`::
+	(ERROR) The "packed-refs" file is not sorted.
+
 `refMissingNewline`::
 	(INFO) A loose ref that does not end with newline(LF). As
 	valid implementations of Git never created such a loose ref
