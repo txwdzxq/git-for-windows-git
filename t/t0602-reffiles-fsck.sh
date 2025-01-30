@@ -639,4 +639,50 @@ test_expect_success SYMLINKS 'the filetype of packed-refs should be checked' '
 	)
 '
 
+test_expect_success 'packed-refs header should be checked' '
+	test_when_finished "rm -rf repo" &&
+	git init repo &&
+	(
+		cd repo &&
+		test_commit default &&
+
+		git refs verify 2>err &&
+		test_must_be_empty err &&
+
+		printf "$(git rev-parse main) refs/heads/main\n" >.git/packed-refs &&
+		git refs verify 2>err &&
+		cat >expect <<-EOF &&
+		warning: packed-refs: packedRefMissingHeader: missing header line
+		EOF
+		rm .git/packed-refs &&
+		test_cmp expect err &&
+
+		for bad_header in "# pack-refs wit: peeled fully-peeled sorted " \
+				"# pack-refs with traits: peeled fully-peeled sorted " \
+				"# pack-refs with a: peeled fully-peeled"
+		do
+			printf "%s\n" "$bad_header" >.git/packed-refs &&
+			test_must_fail git refs verify 2>err &&
+			cat >expect <<-EOF &&
+			error: packed-refs.header: badPackedRefHeader: '\''$bad_header'\'' does not start with '\''# pack-refs with:'\''
+			EOF
+			rm .git/packed-refs &&
+			test_cmp expect err || return 1
+		done &&
+
+		for unknown_header in "# pack-refs with: peeled fully-peeled sorted garbage" \
+				"# pack-refs with: peeled" \
+				"# pack-refs with: peeled peeled-fully sort"
+		do
+			printf "%s\n" "$unknown_header" >.git/packed-refs &&
+			git refs verify 2>err &&
+			cat >expect <<-EOF &&
+			warning: packed-refs.header: unknownPackedRefHeader: '\''$unknown_header'\'' is an unknown packed-refs header
+			EOF
+			rm .git/packed-refs &&
+			test_cmp expect err || return 1
+		done
+	)
+'
+
 test_done
