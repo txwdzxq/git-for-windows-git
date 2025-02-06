@@ -24,7 +24,7 @@
 #define SECURITY_WIN32
 #include <sspi.h>
 #include "../write-or-die.h"
-#include "../repository.h"
+#include "repository.h"
 #include "compat/win32/fscache.h"
 #include "attr.h"
 #include "string-list.h"
