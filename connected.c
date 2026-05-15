@@ -91,6 +91,8 @@ promisor_pack_found:
 			;
 		} while ((oid = fn(cb_data)) != NULL);
 		free(new_pack);
+		if (opt->err_fd)
+			close(opt->err_fd);
 		return 0;
 	}
 
