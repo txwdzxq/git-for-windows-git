@@ -26,7 +26,6 @@
 #include "trace2.h"
 #include "worktree.h"
 
-static int inside_work_tree = -1;
 static int work_tree_config_is_bogus;
 enum allowed_bare_repo {
 	ALLOWED_BARE_REPO_EXPLICIT = 0,
@@ -298,7 +297,7 @@ void verify_filename(const char *prefix,
  */
 void verify_non_filename(const char *prefix, const char *arg)
 {
-	if (!is_inside_work_tree() || is_inside_git_dir(the_repository))
+	if (!is_inside_work_tree(the_repository) || is_inside_git_dir(the_repository))
 		return;
 	if (*arg == '-')
 		return; /* flag */
@@ -477,11 +476,20 @@ int is_inside_git_dir(struct repository *repo)
 	return ret;
 }
 
-int is_inside_work_tree(void)
+int is_inside_work_tree(struct repository *repo)
 {
-	if (inside_work_tree < 0)
-		inside_work_tree = is_inside_dir(repo_get_work_tree(the_repository));
-	return inside_work_tree;
+	struct strbuf buf = STRBUF_INIT;
+	const char *worktree;
+	int ret;
+
+	worktree = repo_get_work_tree(repo);
+	if (!worktree)
+		return 0;
+
+	ret = is_inside_dir(strbuf_realpath(&buf, worktree, 1));
+
+	strbuf_release(&buf);
+	return ret;
 }
 
 void setup_work_tree(void)
@@ -798,13 +806,10 @@ static int check_repository_format_gently(struct repository *repo,
 	if (!has_common) {
 		if (candidate->is_bare != -1) {
 			is_bare_repository_cfg = candidate->is_bare;
-			if (is_bare_repository_cfg == 1)
-				inside_work_tree = -1;
 		}
 		if (candidate->work_tree) {
 			free(git_work_tree_cfg);
 			git_work_tree_cfg = xstrdup(candidate->work_tree);
-			inside_work_tree = -1;
 		}
 	}
 
@@ -1251,7 +1256,6 @@ static const char *setup_discovered_git_dir(struct repository *repo,
 	set_git_work_tree(".");
 	if (strcmp(gitdir, DEFAULT_GIT_DIR_ENVIRONMENT))
 		set_git_dir(repo, gitdir, 0);
-	inside_work_tree = 1;
 	if (offset >= cwd->len)
 		return NULL;
 
@@ -1286,7 +1290,6 @@ static const char *setup_bare_git_dir(struct repository *repo,
 		return setup_explicit_git_dir(repo, gitdir, cwd, repo_fmt, nongit_ok);
 	}
 
-	inside_work_tree = 0;
 	if (offset != cwd->len) {
 		if (chdir(cwd->buf))
 			die_errno(_("cannot come back to cwd"));
