@@ -1765,7 +1765,7 @@ enum discovery_result discover_git_directory_reason(struct strbuf *commondir,
 	return result;
 }
 
-const char *enter_repo(const char *path, unsigned flags)
+const char *enter_repo(struct repository *repo, const char *path, unsigned flags)
 {
 	static struct strbuf validated_path = STRBUF_INIT;
 	static struct strbuf used_path = STRBUF_INIT;
@@ -1838,7 +1838,7 @@ const char *enter_repo(const char *path, unsigned flags)
 	}
 
 	if (is_git_directory(".")) {
-		set_git_dir(the_repository, ".", 0);
+		set_git_dir(repo, ".", 0);
 		check_repository_format(NULL);
 		return path;
 	}
