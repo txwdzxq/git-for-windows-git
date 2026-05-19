@@ -2,6 +2,7 @@
 #define QUOTE_H
 
 struct strbuf;
+struct strvec;
 
 extern int quote_path_fully;
 
@@ -77,7 +78,6 @@ int sq_dequote_to_argv(char *arg, const char ***argv, int *nr, int *alloc);
  * still modify arg in place, but unlike sq_dequote_to_argv, the strvec
  * will duplicate and take ownership of the strings.
  */
-struct strvec;
 int sq_dequote_to_strvec(char *arg, struct strvec *);
 
 int unquote_c_style(struct strbuf *, const char *quoted, const char **endp);
