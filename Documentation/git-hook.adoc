@@ -41,7 +41,7 @@ spell-checker for your commit messages, you would write a configuration like so:
 
 With this config, when you run 'git commit', first `~/bin/linter --cpp20` will
 have a chance to check your files to be committed (during the `pre-commit` hook
-event`), and then `~/bin/spellchecker` will have a chance to check your commit
+event), and then `~/bin/spellchecker` will have a chance to check your commit
 message (during the `commit-msg` hook event).
 
 Commands are run in the order Git encounters their associated
