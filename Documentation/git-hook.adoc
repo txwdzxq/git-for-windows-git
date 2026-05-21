@@ -204,6 +204,7 @@ unintended and unsupported ways.
 
 CONFIGURATION
 -------------
+:git-hook: 1
 include::config/hook.adoc[]
 
 SEE ALSO
