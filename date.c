@@ -1192,6 +1192,16 @@ static void date_never(struct tm *tm, struct tm *now UNUSED, int *num)
 	*num = 0;
 }
 
+static void date_today(struct tm *tm, struct tm *now, int *num)
+{
+	if (tm->tm_hour == now->tm_hour &&
+	    tm->tm_min == now->tm_min &&
+	    tm->tm_sec == now->tm_sec)
+		date_time(tm, now, 0);
+	*num = 0;
+	update_tm(tm, now, 0);
+}
+
 static const struct special {
 	const char *name;
 	void (*fn)(struct tm *, struct tm *, int *);
@@ -1204,6 +1214,7 @@ static const struct special {
 	{ "AM", date_am },
 	{ "never", date_never },
 	{ "now", date_now },
+	{ "today", date_today },
 	{ NULL }
 };
 
