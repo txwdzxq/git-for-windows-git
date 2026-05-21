@@ -27,6 +27,12 @@ UI, Workflows & Features
 
  * "git history" learned "fixup" command.
 
+ * The internal URL parsing logic has been made accessible via a new
+   subcommand "git url-parse".
+
+ * Misspelt proxy URL (e.g., httt://...) did not trigger any warning
+   or failure, which has been corrected.
+
 
 Performance, Internal Implementation, Development Support etc.
 --------------------------------------------------------------
@@ -40,6 +46,15 @@ Performance, Internal Implementation, Development Support etc.
  * Preparation of the xdiff/ codebase to work with Rust.
 
  * Use a larger buffer size in the code paths to ingest pack stream.
+
+ * Refactor service routines in the ref subsystem backends.
+
+ * Shrink wasted memory in Myers diff that does not account for common
+   prefix and suffix removal.
+
+ * Enable expensive tests to catch topics that may cause breakages on
+   integration branches closer to their origin in the contributor PR
+   builds.
 
 
 Fixes since v2.54
@@ -136,6 +151,10 @@ Fixes since v2.54
  * Further update to the i18n alias support to avoid regressions.
    (merge 21186cf9bb jh/alias-i18n-fixes later to maint).
 
+ * "git fetch --deepen=<n>" in a full clone truncated the history to <n>
+   commits deep, which has been corrected to be a no-op instead.
+   (merge 2431f5e0e5 sp/shallow-deepen-on-non-shallow-repo-fix later to maint).
+
  * Other code cleanup, docfix, build fix, etc.
    (merge 80f4b802e9 ja/doc-difftool-synopsis-style later to maint).
    (merge b96490241e jc/doc-timestamps-in-stat later to maint).
@@ -145,3 +164,5 @@ Fixes since v2.54
    (merge 8547908eb3 pw/rename-to-get-current-worktree later to maint).
    (merge 890229b3f3 sg/t6112-unwanted-tilde-expansion-fix later to maint).
    (merge ab9753e7bc kh/doc-restore-double-underscores-fix later to maint).
+   (merge 4a9e097228 za/t2000-modernise-more later to maint).
+   (merge b635fd0725 kh/doc-log-decorate-list later to maint).
