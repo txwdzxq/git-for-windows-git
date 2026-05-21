@@ -75,18 +75,14 @@ Fixes since v2.54
    (merge ffe8005b9d ps/test-set-e-clean later to maint).
 
  * Revert a recent change that introduced a regression to help mksh users.
-   (merge 8b44deebaf jk/revert-aa-reap-transport-child-processes later to maint).
 
  * Update various GitHub Actions versions.
-   (merge 4a6ed9d09f js/ci-github-actions-update later to maint).
 
  * Avoid hitting the pathname limit for socks proxy socket during the
    test..
-   (merge b33bea27a2 js/t5564-socks-use-short-path later to maint).
 
  * To help Windows 10 installations, avoid removing files whose
    contents are still mmap()'ed.
-   (merge 4bb086cfa2 js/maintenance-fix-deadlock-on-win10 later to maint).
 
  * The 'git backfill' command now rejects revision-limiting options that
    are incompatible with its operation, uses standard documentation for
@@ -99,7 +95,6 @@ Fixes since v2.54
 
  * Headers from glibc 2.43 when used with clang does not allow
    disabling C11 language features, causing build failures..
-   (merge 0a6d29090c ps/clang-w-glibc-2.43-and-_Generic later to maint).
 
  * The 'http.emptyAuth=auto' configuration now correctly attempts
    Negotiate authentication before falling back to manual credentials.
@@ -131,7 +126,6 @@ Fixes since v2.54
 
  * Stop using unmaintained custom allocator in Windows build which was
    the last user of the code.
-   (merge 0b72550110 js/mingw-no-nedmalloc later to maint).
 
  * The computation to shorten the filenames shown in diffstat measured
    width of individual UTF-8 characters to add up, but forgot to take
@@ -149,7 +143,6 @@ Fixes since v2.54
    (merge 7735d7eee3 bc/sign-commit-with-custom-encoding later to maint).
 
  * Further update to the i18n alias support to avoid regressions.
-   (merge 21186cf9bb jh/alias-i18n-fixes later to maint).
 
  * "git fetch --deepen=<n>" in a full clone truncated the history to <n>
    commits deep, which has been corrected to be a no-op instead.
@@ -158,7 +151,6 @@ Fixes since v2.54
  * Other code cleanup, docfix, build fix, etc.
    (merge 80f4b802e9 ja/doc-difftool-synopsis-style later to maint).
    (merge b96490241e jc/doc-timestamps-in-stat later to maint).
-   (merge 66ae1a48ec jc/t5551-fix-expensive later to maint).
    (merge ef85286e51 ss/t7004-unhide-git-failures later to maint).
    (merge 7584d10bc2 mf/format-patch-cover-letter-format-docfix later to maint).
    (merge 8547908eb3 pw/rename-to-get-current-worktree later to maint).
