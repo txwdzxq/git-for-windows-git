@@ -33,6 +33,12 @@ UI, Workflows & Features
  * Misspelt proxy URL (e.g., httt://...) did not trigger any warning
    or failure, which has been corrected.
 
+ * Document the fact that .git/info/exclude is shared across worktrees
+   linked to the same repository.
+
+ * The command line parser for "git diff" learned a few options take
+   only non-negative integers.
+
 
 Performance, Internal Implementation, Development Support etc.
 --------------------------------------------------------------
@@ -55,6 +61,8 @@ Performance, Internal Implementation, Development Support etc.
  * Enable expensive tests to catch topics that may cause breakages on
    integration branches closer to their origin in the contributor PR
    builds.
+
+ * "git merge-base" optimization.
 
 
 Fixes since v2.54
@@ -152,6 +160,17 @@ Fixes since v2.54
    prevent multiple maintenance processes from running at the same
    time, which has been corrected.
    (merge 29364f1624 ps/maintenance-daemonize-lockfix later to maint).
+
+ * Remove ineffective strbuf presizing that would have computed an
+   allocation that would not have fit in the available memory anyway,
+   or too small due to integer wraparound to cause immediate automatic
+   growing.
+   (merge a9ce8526dc jk/pretty-no-strbuf-presizing later to maint).
+
+ * The HTTP walker misinterpreted the alternates file that gives an
+   absolute path when the server URL does not have the final slash
+   (i.e., "https://example.com" not "https://example.com/").
+   (merge b92387cd55 jk/dumb-http-alternate-fix later to maint).
 
  * Other code cleanup, docfix, build fix, etc.
    (merge 80f4b802e9 ja/doc-difftool-synopsis-style later to maint).
