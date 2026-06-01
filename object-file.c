@@ -381,7 +381,7 @@ static int parse_loose_header(const char *hdr, struct object_info *oi)
 	}
 
 	if (oi->sizep)
-		*oi->sizep = cast_size_t_to_ulong(size);
+		*oi->sizep = size;
 
 	/*
 	 * The length must be followed by a zero byte
@@ -409,7 +409,7 @@ static int read_object_info_from_path(struct odb_source *source,
 	void *map = NULL;
 	git_zstream stream, *stream_to_end = NULL;
 	char hdr[MAX_HEADER_LEN];
-	unsigned long size_scratch;
+	size_t size_scratch;
 	enum object_type type_scratch;
 	struct stat st;
 
@@ -1222,7 +1222,7 @@ int force_object_loose(struct odb_source *source,
 {
 	const struct git_hash_algo *compat = source->odb->repo->compat_hash_algo;
 	void *buf;
-	unsigned long len;
+	size_t len;
 	struct object_info oi = OBJECT_INFO_INIT;
 	struct object_id compat_oid;
 	enum object_type type;
@@ -2126,7 +2126,7 @@ int read_loose_object(struct repository *repo,
 	unsigned long mapsize;
 	git_zstream stream;
 	char hdr[MAX_HEADER_LEN];
-	unsigned long *size = oi->sizep;
+	size_t *size = oi->sizep;
 
 	fd = git_open(path);
 	if (fd >= 0)
@@ -2302,7 +2302,6 @@ int odb_source_loose_read_object_stream(struct odb_read_stream **out,
 	struct object_info oi = OBJECT_INFO_INIT;
 	struct odb_loose_read_stream *st;
 	unsigned long mapsize;
-	unsigned long size_ul;
 	void *mapped;
 
 	mapped = odb_source_loose_map_object(source, oid, &mapsize);
@@ -2326,18 +2325,11 @@ int odb_source_loose_read_object_stream(struct odb_read_stream **out,
 		goto error;
 	}
 
-	/*
-	 * object_info.sizep is unsigned long* (32-bit on Windows), but
-	 * st->base.size is size_t (64-bit). Use temporary variable.
-	 * Note: loose objects >4GB would still truncate here, but such
-	 * large loose objects are uncommon (they'd normally be packed).
-	 */
-	oi.sizep = &size_ul;
+	oi.sizep = &st->base.size;
 	oi.typep = &st->base.type;
 
 	if (parse_loose_header(st->hdr, &oi) < 0 || st->base.type < 0)
 		goto error;
-	st->base.size = size_ul;
 
 	st->mapped = mapped;
 	st->mapsize = mapsize;
