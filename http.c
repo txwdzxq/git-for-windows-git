@@ -2614,11 +2614,13 @@ static int fetch_and_setup_pack_index(struct packfile_list *packs,
 	}
 
 	ret = verify_pack_index(new_pack);
-	if (!ret)
-		close_pack_index(new_pack);
+
+	close_pack_index(new_pack);
 	free(tmp_idx);
-	if (ret)
+	if (ret) {
+		free(new_pack);
 		return -1;
+	}
 
 	packfile_list_prepend(packs, new_pack);
 	return 0;
