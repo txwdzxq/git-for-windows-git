@@ -783,7 +783,7 @@ static int count_objects(const char *path UNUSED, struct oid_array *oids,
 
 	for (size_t i = 0; i < oids->nr; i++) {
 		struct object_info oi = OBJECT_INFO_INIT;
-		unsigned long inflated;
+		size_t inflated;
 		struct commit *commit;
 		struct object *obj;
 		void *content;

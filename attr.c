@@ -768,7 +768,7 @@ static struct attr_stack *read_attr_from_blob(struct index_state *istate,
 					      const char *path, unsigned flags)
 {
 	struct object_id oid;
-	unsigned long sz;
+	size_t sz;
 	enum object_type type;
 	void *buf;
 	unsigned short mode;
@@ -793,7 +793,7 @@ static struct attr_stack *read_attr_from_index(struct index_state *istate,
 {
 	struct attr_stack *stack = NULL;
 	char *buf;
-	unsigned long size;
+	size_t size;
 	int sparse_dir_pos = -1;
 
 	if (!istate)
