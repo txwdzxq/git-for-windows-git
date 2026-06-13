@@ -4,7 +4,6 @@
 #define _FILE_OFFSET_BITS 64
 
 /*
- * Derived from Linux "Features Test Macro" header
  * Convenience macros to test the versions of GCC (or a compatible compiler).
  * Use them like this:
  *  #if GIT_GNUC_PREREQ (2,8)
@@ -19,7 +18,8 @@
  */
 #if defined(__GNUC__) && defined(__GNUC_MINOR__)
 # define GIT_GNUC_PREREQ(maj, min) \
-	((__GNUC__ << 16) + __GNUC_MINOR__ >= ((maj) << 16) + (min))
+	((__GNUC__ > (maj)) || \
+	 (__GNUC__ == (maj) && __GNUC_MINOR__ >= (min)))
 #else
 # define GIT_GNUC_PREREQ(maj, min) 0
 #endif
