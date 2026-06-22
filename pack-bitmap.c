@@ -1853,10 +1853,10 @@ static void filter_bitmap_blob_none(struct bitmap_index *bitmap_git,
 				   OBJ_BLOB);
 }
 
-static unsigned long get_size_by_pos(struct bitmap_index *bitmap_git,
-				     uint32_t pos)
+static size_t get_size_by_pos(struct bitmap_index *bitmap_git,
+			      uint32_t pos)
 {
-	unsigned long size;
+	size_t size;
 	struct object_info oi = OBJECT_INFO_INIT;
 
 	oi.sizep = &size;
