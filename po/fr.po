@@ -152,7 +152,7 @@ msgstr[1] "%d chemins inversés\n"
 
 #, c-format
 msgid "No untracked files.\n"
-msgstr "Aucun Fichier non suivi.\n"
+msgstr "Aucun fichier non suivi.\n"
 
 msgid "Add untracked"
 msgstr "Ajouter un fichier non-suivi"
@@ -622,7 +622,7 @@ msgstr ""
 "l'élimine !) [y|n] ? "
 
 msgid "The selected hunks do not apply to the index!"
-msgstr "Les sections sélectionnées ne s'applique pas à l'index !"
+msgstr "Les sections sélectionnées ne s'appliquent pas à l'index !"
 
 msgid "Apply them to the worktree anyway? "
 msgstr "Les appliquer quand même à l'arbre de travail ? "
@@ -1804,7 +1804,7 @@ msgid ""
 "Maybe you started with bad path arguments?\n"
 msgstr ""
 "Aucun commit testable n'a été trouvé\n"
-"Peut-être avez-vous démarré avec un mauvais arguement de chemin ?\n"
+"Peut-être avez-vous démarré avec un mauvais argument de chemin ?\n"
 
 #, c-format
 msgid "(roughly %d step)"
@@ -2757,7 +2757,7 @@ msgstr "mauvaise HEAD - référence symbolique douteuse"
 
 #, c-format
 msgid "invalid ref: '%s'"
-msgstr "réference invalide : '%s'"
+msgstr "référence invalide : '%s'"
 
 msgid "You need to start by \"git bisect start\"\n"
 msgstr "Vous devez démarrer avec \"git bisect start\"\n"
@@ -4568,7 +4568,7 @@ msgid "separate git dir from working tree"
 msgstr "séparer le répertoire git de la copie de travail"
 
 msgid "specify the reference format to use"
-msgstr "spécifier le format de réference à utiliser"
+msgstr "spécifier le format de référence à utiliser"
 
 msgid "key=value"
 msgstr "clé=valeur"
@@ -6397,18 +6397,18 @@ msgstr "impossible de stocker le fichier d'index"
 
 #, c-format
 msgid "failed seeking to start of '%s'"
-msgstr "échec de la recherche du debut de '%s'"
+msgstr "échec de la recherche du début de '%s'"
 
 #, c-format
 msgid "core Git rejected index %s"
-msgstr "le cœur de Git a rejecté l'index %s"
+msgstr "le cœur de Git a rejeté l'index %s"
 
 msgid "cannot truncate pack to skip duplicate"
-msgstr "impossible de tronquer le paquet pour sauté la duplication"
+msgstr "impossible de tronquer le paquet pour sauter la duplication"
 
 #, c-format
 msgid "EOF in data (%<PRIuMAX> bytes remaining)"
-msgstr "OEF dans les données (%<PRIuMAX> octets restant)"
+msgstr "EOF dans les données (%<PRIuMAX> octets restants)"
 
 #, c-format
 msgid "unexpected deflate failure: %d"
@@ -7461,7 +7461,7 @@ msgstr "%s : entrée %s de journal de références invalide"
 
 #, c-format
 msgid "Checking reflog %s->%s"
-msgstr "Vérification du journal de réferences %s-> %s"
+msgstr "Vérification du journal de références %s-> %s"
 
 #, c-format
 msgid "%s: invalid sha1 pointer %s"
@@ -7524,7 +7524,7 @@ msgid "invalid rev-index for pack '%s'"
 msgstr "rev-index invalide pour le paquet '%s'"
 
 msgid "Checking ref database"
-msgstr "Vérification de la base de données des réferences"
+msgstr "Vérification de la base de données des références"
 
 msgid ""
 "git fsck [--tags] [--root] [--unreachable] [--cache] [--no-reflogs]\n"
@@ -8070,7 +8070,7 @@ msgid "show column number of first match"
 msgstr "afficher le numéro de colonne de la première correspondance"
 
 msgid "don't show filenames"
-msgstr "ne pas pas afficher les noms de fichier"
+msgstr "ne pas afficher les noms de fichier"
 
 msgid "show filenames"
 msgstr "afficher les noms de fichier"
@@ -11169,7 +11169,7 @@ msgstr "impossible d'accéder le commit %s"
 
 #, c-format
 msgid "invalid refspec '%s'"
-msgstr "spécificateur de réference invalide : '%s'"
+msgstr "spécificateur de référence invalide : '%s'"
 
 msgid "ignoring --verify-signatures for rebase"
 msgstr "--verify-signatures est ignoré pour un rebasage"
@@ -12336,7 +12336,7 @@ msgid "git refs optimize "
 msgstr "git refs optimize "
 
 msgid "specify the reference format to convert to"
-msgstr "spécifier le format de réference vers lequel convertir"
+msgstr "spécifier le format de référence vers lequel convertir"
 
 msgid "perform a non-destructive dry-run"
 msgstr "faire l'action en mode simulé non destructif"
@@ -12541,8 +12541,8 @@ msgid ""
 "If that is the case, you can address this by first renaming the\n"
 "remote to a different name.\n"
 msgstr ""
-"Le distant que vous essayer de renommer a des réference en conflit\n"
-"dans le nouveau refspec cible. C'est probablement du à un essai de\n"
+"Le distant que vous essayez de renommer a des références en conflit\n"
+"dans le nouveau refspec cible. C'est probablement dû à un essai de\n"
 "emboîter un distant dans lui-même, p. ex., en renommant 'parent' en\n"
 "'parent/enfant' ou à l'inverse, en dé-emboîtant un distant.\n"
 "\n"
@@ -12551,7 +12551,7 @@ msgstr ""
 
 #, c-format
 msgid "No such remote: '%s'"
-msgstr "Pas de serveur remote : '%s'"
+msgstr "Pas de serveur distant : '%s'"
 
 #, c-format
 msgid "Could not rename config section '%s' to '%s'"
@@ -12804,7 +12804,7 @@ msgstr "élagué les distants après la récupération"
 
 #, c-format
 msgid "No such remote '%s'"
-msgstr "Pas de serveur remote '%s'"
+msgstr "Pas de serveur distant '%s'"
 
 msgid "add branch"
 msgstr "ajouter une branche"
@@ -13154,7 +13154,7 @@ msgid "--convert-graft-file takes no argument"
 msgstr "--convert-graft-file ne supporte aucun argument"
 
 msgid "only one pattern can be given with -l"
-msgstr "-l n'accepte qu'un motifs"
+msgstr "-l n'accepte qu'un motif"
 
 #, c-format
 msgid "invalid %s value: '%s'"
@@ -13771,8 +13771,8 @@ msgstr "git show-branch (-g | --reflog)[=<n>[,<base>]] [--list] [<référence>]"
 #, c-format
 msgid "ignoring %s; cannot handle more than %d ref"
 msgid_plural "ignoring %s; cannot handle more than %d refs"
-msgstr[0] "%s ignoré; impossible de gérer plus de %d référence"
-msgstr[1] "%s ignoré; impossible de gérer plus de %d références"
+msgstr[0] "%s ignoré ; impossible de gérer plus de %d référence"
+msgstr[1] "%s ignoré ; impossible de gérer plus de %d références"
 
 #, c-format
 msgid "no matching refs with %s"
@@ -15849,7 +15849,7 @@ msgid ""
 "cannot move a locked working tree;\n"
 "use 'move -f -f' to override or unlock first"
 msgstr ""
-"impossible de déplacer un arbre de travail verrouillé;\n"
+"impossible de déplacer un arbre de travail verrouillé ;\n"
 "utilisez 'move -f -f' pour outrepasser ou déverrouiller avant"
 
 #, c-format
@@ -18710,8 +18710,8 @@ msgid ""
 msgstr ""
 "Vous tentez de récupérer %s, qui est dans le graphe de commit mais pas dans "
 "la base de données des objets.\n"
-"C'est probablement du à une corruption de dépôt.\n"
-"Si vous essayez de réparer cette corruption de dépôt en re-récupérer l'objet "
+"C'est probablement dû à une corruption de dépôt.\n"
+"Si vous essayez de réparer cette corruption de dépôt en re-récupérant l'objet "
 "manquant, utilisez 'git fetch --refetch' sur les objets manquants."
 
 msgid "git fetch-pack: expected shallow list"
@@ -22015,7 +22015,7 @@ msgstr "Vérification de la cohérence des références"
 
 #, c-format
 msgid "%s does not point to a valid object!"
-msgstr "%s ne pointe pas sur un objet valide!"
+msgstr "%s ne pointe pas sur un objet valide !"
 
 #, c-format
 msgid "%s%s will become dangling after %s is deleted\n"
@@ -22202,7 +22202,7 @@ msgstr "impossible d'ouvrir '%s'"
 
 #, c-format
 msgid "refname is dangerous: %s"
-msgstr "le nom de réference est dangereux : %s"
+msgstr "le nom de référence est dangereux : %s"
 
 #, c-format
 msgid ""
@@ -23279,7 +23279,7 @@ msgstr ""
 "\"git add/rm <spéc-de-réf>\", puis lancez\n"
 "\"git cherry-pick --continue\".\n"
 "Vous pouvez aussi sauter ce commit avec \"git cherry-pick --skip\".\n"
-"Pour arrêter et revenir à l'état antérieur à \"git cherry-pick\",,\n"
+"Pour arrêter et revenir à l'état antérieur à \"git cherry-pick\",\n"
 "lancez \"git cherry-pick --abort\"."
 
 msgid ""
@@ -23294,7 +23294,7 @@ msgstr ""
 "\"git add/rm <spéc-de-réf>\", puis lancez\n"
 "\"git revert --continue\".\n"
 "Vous pouvez aussi sauter ce commit avec \"git revert --skip\".\n"
-"Pour arrêter et revenir à l'état antérieur à \"git revert\",,\n"
+"Pour arrêter et revenir à l'état antérieur à \"git revert\",\n"
 "lancez \"git revert --abort\"."
 
 #, c-format
@@ -23850,7 +23850,7 @@ msgstr "fusion : Impossible d'écrire le nouveau fichier index"
 #, c-format
 msgid ""
 "another 'rebase' process appears to be running; '%s.lock' already exists"
-msgstr "un processu 'rebase' semble déjà lancé; '%s.lock' existe déjà"
+msgstr "un processus 'rebase' semble déjà lancé ; '%s.lock' existe déjà"
 
 #, c-format
 msgid ""
@@ -24793,7 +24793,7 @@ msgid ""
 "version of Git"
 msgstr ""
 "capacité obligatoire inconnue %s ; cet assistant distant requiert "
-"probablement une une nouvelle version de Git"
+"probablement une nouvelle version de Git"
 
 msgid "this remote helper should implement refspec capability"
 msgstr "cet assistant distant devrait supporter la capacité refspec"
