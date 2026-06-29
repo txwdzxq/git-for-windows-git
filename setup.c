@@ -1047,6 +1047,7 @@ const char *read_gitfile_gently(const char *path, int *return_error_code)
 	}
 #if (defined _WIN32 || defined __WIN32__)
 	if (is_dir_sep(dir[0]) && is_invalid_dotgit_path(path, dir)) {
+		strbuf_reset(&realpath);
 		strbuf_add(&realpath, dir, strlen(dir));
 		path = realpath.buf;
 		goto cleanup_return;
@@ -1057,6 +1058,7 @@ const char *read_gitfile_gently(const char *path, int *return_error_code)
 		goto cleanup_return;
 	}
 
+	strbuf_reset(&realpath);
 	strbuf_realpath(&realpath, dir, 1);
 	path = realpath.buf;
 
